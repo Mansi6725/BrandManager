@@ -1,8 +1,8 @@
-import { Box, Grid, Paper } from '@material-ui/core'
+import { Box, Grid} from '@material-ui/core'
 import React from 'react'
-import { renderButton, renderInputText, renderText } from '../common/displayComponents'
+import { renderButton, renderInputText} from '../common/displayComponents'
 
-const Step2 = ({state,handleOnChange,handleNext,handlePrev}) => {
+const Step2 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
   return (
     <Box p={4}>
     {/* <Box mb={2}>
@@ -13,7 +13,8 @@ const Step2 = ({state,handleOnChange,handleNext,handlePrev}) => {
             {renderInputText({
                 label:"Category Name",
                 name:"category_name",
-                state,
+                data,
+                errors,
                 handleOnChange
             })}
         </Grid>
@@ -21,15 +22,26 @@ const Step2 = ({state,handleOnChange,handleNext,handlePrev}) => {
             {renderInputText({
                 label:"Category Prefix",
                 name:"category_prefix",
-                state,
+                data,
+                errors,
                 handleOnChange
             })}
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={6}>
             {renderInputText({
                 label:"Parent menu node",
                 name:"parent_menu_node",
-                state,
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                label:"Menu_Node_Name",
+                name:"menu_name",
+                data,
+                errors,
                 handleOnChange
             })}
         </Grid>
@@ -37,12 +49,12 @@ const Step2 = ({state,handleOnChange,handleNext,handlePrev}) => {
     <Grid container spacing={1} justifyContent="flex-end">
         <Grid item>
             <Box>
-                {renderButton({label:"Back",color:"black",handleOnClick:handlePrev})} 
+                {renderButton({label:"Back",handleOnClick:handlePrev})} 
             </Box>
         </Grid>
         <Grid item>
             <Box>
-                {renderButton({label:"Next",color:"black",handleOnClick:handleNext})} 
+                {renderButton({label:"Next",handleOnClick:handleNext})} 
             </Box>
         </Grid>
     </Grid>

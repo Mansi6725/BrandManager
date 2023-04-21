@@ -1,8 +1,8 @@
-import { Box, Grid, Paper } from '@material-ui/core'
+import { Box, Grid} from '@material-ui/core'
 import React from 'react'
-import { renderButton, renderInputText, renderText } from '../common/displayComponents'
+import { renderButton, renderInputText} from '../common/displayComponents'
 
-const Step3 = ({state,handleOnChange,handleNext,handlePrev}) => {
+const Step3 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
   return (
     <Box p={4}>
     {/* <Box mb={2}>
@@ -13,16 +13,18 @@ const Step3 = ({state,handleOnChange,handleNext,handlePrev}) => {
             {renderInputText({
                 label:"Page Type",
                 name:"page_type",
-                state,
+                data,
+                errors,
                 handleOnChange
             })}
         </Grid>
         <Grid item xs={12} sm={12}>
             {renderInputText({
-                label:"Id",
+                label:"Page Id",
                 type:"number",
-                name:"id",
-                state,
+                name:"page_id",
+                data,
+                errors,
                 handleOnChange
             })}
         </Grid>
@@ -30,12 +32,12 @@ const Step3 = ({state,handleOnChange,handleNext,handlePrev}) => {
     <Grid container spacing={1} justifyContent="flex-end">
         <Grid item>
             <Box>
-                {renderButton({label:"Back",color:"black",handleOnClick:handlePrev})} 
+                {renderButton({label:"Back",handleOnClick:handlePrev})} 
             </Box>
         </Grid>
         <Grid item>
             <Box>
-                {renderButton({label:"Next",color:"black",handleOnClick:handleNext})} 
+                {renderButton({label:"Next",handleOnClick:handleNext})} 
             </Box>
         </Grid>
     </Grid>

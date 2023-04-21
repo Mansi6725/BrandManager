@@ -2,17 +2,15 @@ import { Box, Grid} from '@material-ui/core'
 import React from 'react'
 import { renderButton, renderInputText} from '../common/displayComponents'
 
-const Step4 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
+const Step5 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
   return (
     <Box p={3}>
-    {/* <Box mb={2}>
-        {renderText({label:"Configuration Values",color:"black"})}
-    </Box> */}
     <Grid container spacing={2} style={{marginBottom:"10px"}}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
             {renderInputText({
-                label:"HK_Pay Account Id",
-                name:"hkpay_account_id",
+                required:true,
+                label:"Domain",
+                name:"domain",
                 data,
                 errors,
                 handleOnChange
@@ -20,8 +18,54 @@ const Step4 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
         </Grid>
         <Grid item xs={12} sm={6}>
             {renderInputText({
-                label:"HK_Pay Secret Key",
-                name:"hkpay_secret_key",
+                label:"Domain Name",
+                name:"domainName",
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                label:"Domain Type",
+                name:"domainType",
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                label:"From Email",
+                name:"fromEmail",
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                label:"Reply Email",
+                name:"replyEmail",
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                label:"From Name",
+                name:"fromName",
+                data,
+                errors,
+                handleOnChange
+            })}
+        </Grid>
+        <Grid item xs={12} sm={6}>
+            {renderInputText({
+                required:true,
+                label:"ApiKey",
+                name:"apiKey",
                 data,
                 errors,
                 handleOnChange
@@ -29,44 +73,17 @@ const Step4 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
         </Grid>
         <Grid item xs={12} sm={12}>
             {renderInputText({
-                label:"Location Code",
-                name:"location_code",
+                label:"Mail ClientId",
+                name:"mailClientId",
                 data,
                 errors,
                 handleOnChange
             })}
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
             {renderInputText({
-                label:"S3 Secret Key",
-                name:"s3_secret_key",
-                data,
-                errors,
-                handleOnChange
-            })}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-            {renderInputText({
-                label:"S3 Access Key",
-                name:"s3_access_key",
-                data,
-                errors,
-                handleOnChange
-            })}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-            {renderInputText({
-                label:"S3 Upload Bucket",
-                name:"s3_upload_bucket",
-                data,
-                errors,
-                handleOnChange
-            })}
-        </Grid>
-        <Grid item xs={12} sm={6}>
-            {renderInputText({
-                label:"S3 Download Bucket",
-                name:"s3_download_bucket",
+                label:"Parent Domain",
+                name:"parentDomain",
                 data,
                 errors,
                 handleOnChange
@@ -81,7 +98,7 @@ const Step4 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
         </Grid>
         <Grid item>
             <Box>
-                {renderButton({label:"Next",handleOnClick:handleNext})} 
+                {renderButton({label:"Finish",handleOnClick:handleNext})} 
             </Box>
         </Grid>
     </Grid>
@@ -89,4 +106,4 @@ const Step4 = ({data,errors,handleOnChange,handleNext,handlePrev}) => {
   )
 }
 
-export default Step4
+export default Step5

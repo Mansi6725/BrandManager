@@ -1,10 +1,10 @@
-import { Box, Grid, Paper, styled } from '@material-ui/core'
+import { Box, Grid} from '@material-ui/core'
 import React from 'react'
 import { renderButton, renderText } from '../common/displayComponents'
 
 
 const Finished = ({data,handleEdit,submitting,handleSubmit}) => {
-    console.log(submitting);
+    // console.log(submitting);
   return (
     <Box p={3}>
         <Box mb={2}>
@@ -35,16 +35,27 @@ const Finished = ({data,handleEdit,submitting,handleSubmit}) => {
                 <Box>S3 Upload Bucket: {data.s3_upload_bucket}</Box>
                 <Box>S3 Download Bucket: {data.s3_download_bucket}</Box>
             </Box>
+            <Box m={2}>
+                <Box>Domain: {data.domain}</Box>
+                <Box>Domain Type: {data.domainType}</Box>
+                <Box>From Email: {data.fromEmail}</Box>
+                <Box>Reply Email: {data.replyEmail}</Box>
+                <Box>From Name: {data.fromName}</Box>
+                <Box>Api Key: {data.apiKey}</Box>
+                <Box>Mail ClientId: {data.mailClientId}</Box>
+                <Box>Domain Name: {data.domainName}</Box>
+                <Box>Parent Domain: {data.parentDomain}</Box>
+            </Box>
         </Box>
         <Grid container spacing={1} justifyContent="flex-end">
             <Grid item>
                 <Box>
-                    {renderButton({label:"Edit",color:"black",handleOnClick:handleEdit})} 
+                    {renderButton({label:"Edit",handleOnClick:handleEdit})} 
                 </Box>
             </Grid>
             <Grid item>
             <   Box>
-                    {renderButton({label:"Submit",color:"black",type:"submit",disabled:submitting,handleOnClick:handleSubmit})} 
+                    {renderButton({label:"Submit",type:"submit",disabled:submitting,handleOnClick:handleSubmit})} 
                 </Box>
             </Grid>
         </Grid>

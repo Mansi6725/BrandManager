@@ -1,17 +1,44 @@
-import { Typography,TextField,Button } from "@material-ui/core";
-export const renderText=({label,color,align,variant})=>(
+import { Typography,TextField,Button, makeStyles } from "@material-ui/core";
+
+const styles =makeStyles({
+    textfield:{
+        "& label.Mui-focused": {
+            color: "#00b5b7"
+          },
+        "& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+            borderColor: "#00b5b7"
+        }
+      }
+    },
+    button: {
+        backgroundColor: '#fff9f4',
+        border:'1px solid #ff8914',
+        color: '#ff8914',
+        fontWeight:'bold',
+        '&:hover': {
+          backgroundColor: '#ff8914',
+          color: '#fff',
+      },
+    }
+});
+
+export const renderText=({label,align,variant})=>(
 <Typography
-    color={color?color:"primary"}
     align={align?align:"center"}
     variant={variant?variant:"h6"}
 >
     {label}
 </Typography>
 );
-export const renderInputText=({label,name,color,type,state,handleOnChange})=>{
-    const {data,errors}=state;
+export const renderInputText=({required,label,color,name,type,data,errors,handleOnChange})=>{
+    
+    // const {data,errors}=state;
+    const classes=styles();
     return(
         <TextField 
+        required={required?true:false}
+        className={classes.textfield}
         id="outlined-basic" 
         label={label}
         color={color?color:"primary"} 
@@ -28,15 +55,19 @@ export const renderInputText=({label,name,color,type,state,handleOnChange})=>{
     />
     );
 };
-export const renderButton=({label,color,variant,type,disabled,handleOnClick})=>(
+export const renderButton=({label,variant,type,disabled,handleOnClick})=>{
+    const classes=styles();
+    return(
     <Button 
         variant={variant?variant:"outlined"}
+        className={classes.button}
         disabled={disabled?true:false}
-        color={color?color:"primary"}
+        // color={color?color:"primary"}
         type={type?type:"button"}
         // size="small" 
         onClick={handleOnClick}
     >
     {label}
     </Button>
-);
+    )
+};
