@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 body{
+  overflow:'hidden'
   /* background-color: #effbfc; */
   /* background-color: #00B5B7; */
-  background-color: #ccf0f1;
+  /* background-color: #ccf0f1; */
 }
