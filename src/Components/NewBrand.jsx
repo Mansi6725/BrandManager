@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormComponent from "./form/FormComponent";
-import { formdata, login } from "./common/FormData";
+import { formdata} from "./common/FormData";
 import { useSetRecoilState } from "recoil";
 // import { useNavigate } from 'react-router-dom'
 
 const NewBrand = () => {
   // const resetData=useResetRecoilState(formdata)
   // resetData();
+  
+
   const setData = useSetRecoilState(formdata);
 
   setData({

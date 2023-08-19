@@ -9,10 +9,10 @@ import {
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { login } from "./common/FormData";
+// import { login } from "./common/FormData";
 
 export default function Header() {
-  const [user, setUser] = useRecoilState(login);
+  // const [user, setUser] = useRecoilState(login);
   const navigate = useNavigate();
   const theme = createTheme({
     palette: {
@@ -24,11 +24,13 @@ export default function Header() {
   });
 
   const handleLogOnClick = () => {
-    if (user.emailId) {
-      setUser({ emailId: "", password: "" });
+    if (authToken) {
+      // setUser({ emailId: "", password: "" });
+      sessionStorage.removeItem('authToken');
       navigate("/login");
     }
   };
+  const authToken = sessionStorage.getItem('authToken');
   return (
     // <Box sx={{ flexGrow: 1 }}>
     <ThemeProvider theme={theme}>
@@ -48,7 +50,7 @@ export default function Header() {
             </Typography></span>
           </div>
           <div>
-            {user.emailId ? (
+            {authToken ? (
               <Button
                 component={Link}
                 to={{ pathname: "/newbrand" }}
@@ -72,7 +74,7 @@ export default function Header() {
                 },
               }}
             >
-              {user.emailId ? "Logout" : "Login"}
+              {authToken ? "Logout" : "Login"}
             </Button>
           </div>
         </Toolbar>

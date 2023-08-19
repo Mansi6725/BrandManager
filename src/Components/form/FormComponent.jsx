@@ -18,15 +18,17 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
-import { formdata, login } from "../common/FormData";
+import { formdata} from "../common/FormData";
 import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const FormComponent = (props) => {
-  const [user, setUser] = useRecoilState(login);
+  // const [user, setUser] = useRecoilState(login);
   const navigate = useNavigate();
   useEffect(() => {
-    if (user.emailId === "") {
+    const authToken = sessionStorage.getItem('authToken');
+    // if (user.emailId === "") {
+      if (!authToken) {
       navigate("/login");
     }
   }, []);

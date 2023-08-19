@@ -7,7 +7,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { useRecoilState } from "recoil";
-import { login } from "./common/FormData";
+// import { login } from "./common/FormData";
 const useStyles = makeStyles((theme) => ({
   heading: {
     fontWeight: "bold",
@@ -35,15 +35,22 @@ const BrandList = (props) => {
   const [data, setData] = useState([]);
   const classes = useStyles();
   // const [pageSize, setPageSize] = useState(10);
-  const [user, setUser] = useRecoilState(login);
+  // const [user, setUser] = useRecoilState(login);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(host + "/brands");
       setData(result.data);
     };
-    if (user.emailId === "") navigate("/login");
-    fetchData();
+    // if (user.emailId === "") navigate("/login");
+    const authToken = sessionStorage.getItem('authToken');
+    if(authToken){
+      fetchData();
+    }
+    else{
+      navigate('/login')
+    }
+    
   }, []);
 
   // const handlePageSizeChange = (e) => {
@@ -68,12 +75,15 @@ const BrandList = (props) => {
   };
 
   const handleEdit = (storeId) => {
-    localStorage.setItem(
+    // console.log("hii")
+    sessionStorage.setItem(
       "status",
       JSON.stringify({
         storeId: storeId,
       })
     );
+    // console.log("byee")
+    // navigate('/edit')
   };
 
   const columns = [

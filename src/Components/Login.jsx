@@ -11,14 +11,15 @@ import axios from "axios";
 import { host } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { login } from "./common/FormData";
+// import { login } from "./common/FormData";
 import { makeStyles } from "@material-ui/core";
 import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useRecoilState(login);
- 
+  // const [user, setUser] = useRecoilState(login);
+
+  
   const [errors, setErrors] = useState({
     email: "",
     password: "",
@@ -64,7 +65,10 @@ export default function Login() {
     try {
       const response = await axios.post(host + "/login", userToCheck);
       console.log(response.data);
-      setUser({ emailId: data.get("email"), password: data.get("password") });
+      const authToken = response.data.token;
+    // Store the authentication token in session storage
+    sessionStorage.setItem('authToken', authToken);
+      // setUser({ emailId: data.get("email"), password: data.get("password") });
       navigate("/");
     } catch (error) {
       // console.log(error);

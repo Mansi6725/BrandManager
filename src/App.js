@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 // import { RecoilRoot, useRecoilState } from 'recoil';
 import Header from "./Components/Header";
 // import Login from './Components/Login';
